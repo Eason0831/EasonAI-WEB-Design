@@ -123,6 +123,6 @@ MIT License
 
 ## 联系方式
 
-- 邮箱：info@vancouverstore.com
-- 电话：+1 (604) 123-4567
-- 地址：温哥华市中心 
+- 邮箱：wrz8611551@gmail.com
+- 电话：+1 (778) 955-1699
+- 地址：EasonAI王奕杰 
