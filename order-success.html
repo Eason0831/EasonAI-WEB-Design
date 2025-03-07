@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单成功 - 温哥华食品烟草商城</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .success-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #2ecc71;
+            margin-bottom: 1rem;
+        }
+
+        .success-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .success-message {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .order-info {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .order-info-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .order-info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .order-info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .order-info-label {
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .action-button {
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .view-order {
+            background: #e74c3c;
+            color: #fff;
+        }
+
+        .view-order:hover {
+            background: #c0392b;
+        }
+
+        .continue-shopping {
+            background: #fff;
+            color: #666;
+            border: 1px solid #ddd;
+        }
+
+        .continue-shopping:hover {
+            background: #f5f5f5;
+        }
+
+        .order-tips {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            text-align: left;
+        }
+
+        .order-tips-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .order-tips-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .order-tips-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .order-tips-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .order-tips-item i {
+            color: #2ecc71;
+        }
+
+        @media (max-width: 768px) {
+            .success-container {
+                margin: 2rem 1rem;
+                padding: 1.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="温哥华食品烟草商城">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="products.html">商品</a>
+                <a href="about.html">关于我们</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+            <div class="nav-actions">
+                <div class="language-selector">
+                    <button class="lang-btn">
+                        <i class="fas fa-globe"></i>
+                        <span>中文</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <a href="#" class="active">中文</a>
+                        <a href="#">English</a>
+                    </div>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <div class="success-container">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h1 class="success-title">订单提交成功！</h1>
+            <p class="success-message">
+                感谢您的购买！我们已收到您的订单，订单号：<span class="order-number"></span><br>
+                我们将在1-2个工作日内处理您的订单。
+            </p>
+
+            <div class="order-info">
+                <h2 class="order-info-title">订单信息</h2>
+                <div class="order-info-item">
+                    <span class="order-info-label">订单号：</span>
+                    <span class="order-number"></span>
+                </div>
+                <div class="order-info-item">
+                    <span class="order-info-label">支付方式：</span>
+                    <span class="payment-method"></span>
+                </div>
+                <div class="order-info-item">
+                    <span class="order-info-label">订单金额：</span>
+                    <span class="order-amount"></span>
+                </div>
+                <div class="order-info-item">
+                    <span class="order-info-label">预计送达：</span>
+                    <span class="delivery-date"></span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="#" class="action-button view-order">查看订单</a>
+                <a href="products.html" class="action-button continue-shopping">继续购物</a>
+            </div>
+
+            <div class="order-tips">
+                <h2 class="order-tips-title">温馨提示</h2>
+                <ul class="order-tips-list">
+                    <li class="order-tips-item">
+                        <i class="fas fa-info-circle"></i>
+                        您可以在"我的订单"中查看订单状态和物流信息
+                    </li>
+                    <li class="order-tips-item">
+                        <i class="fas fa-envelope"></i>
+                        订单确认邮件已发送至您的邮箱
+                    </li>
+                    <li class="order-tips-item">
+                        <i class="fas fa-phone"></i>
+                        如有任何问题，请联系客服：+1 (604) 123-4567
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- AI 聊天助手 -->
+    <div class="chat-widget">
+        <button class="chat-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chat-badge">新消息</span>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>AI 购物助手</h3>
+                <button class="chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        您好！我是您的AI购物助手，很高兴为您服务。请问有什么我可以帮您的吗？
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="请输入您的问题...">
+                <button class="send-message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>关于我们</h3>
+                <p>温哥华食品烟草商城是您值得信赖的优质商品供应商。我们提供高品质的食品和烟草产品，确保您的购物体验。</p>
+            </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="products.html">商品</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +1 (604) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@vancouverstore.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 温哥华市中心</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>关注我们</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 温哥华食品烟草商城. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/order-success.js"></script>
+</body>
+</html> 

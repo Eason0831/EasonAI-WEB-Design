@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>结算 - 温哥华食品烟草商城</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .checkout-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .checkout-form {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            border-color: #e74c3c;
+            outline: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .payment-method {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-method:hover {
+            border-color: #e74c3c;
+        }
+
+        .payment-method.selected {
+            border-color: #e74c3c;
+            background: #fff5f5;
+        }
+
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .payment-method.selected i {
+            color: #e74c3c;
+        }
+
+        .order-summary {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 2rem;
+            height: fit-content;
+        }
+
+        .order-items {
+            margin-bottom: 1.5rem;
+        }
+
+        .order-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .order-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .order-item-info {
+            flex: 1;
+        }
+
+        .order-item-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-item-price {
+            color: #e74c3c;
+        }
+
+        .order-item-quantity {
+            color: #666;
+        }
+
+        .order-total {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .total-row.final {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1.5rem;
+        }
+
+        .place-order-btn:hover {
+            background: #c0392b;
+        }
+
+        .place-order-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="温哥华食品烟草商城">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="products.html">商品</a>
+                <a href="about.html">关于我们</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+            <div class="nav-actions">
+                <div class="language-selector">
+                    <button class="lang-btn">
+                        <i class="fas fa-globe"></i>
+                        <span>中文</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <a href="#" class="active">中文</a>
+                        <a href="#">English</a>
+                    </div>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <div class="checkout-container">
+            <!-- 结算表单 -->
+            <div class="checkout-form">
+                <div class="form-section">
+                    <h2 class="form-section-title">收货信息</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">姓名</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">电话</label>
+                            <input type="tel" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">地址</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">城市</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">邮编</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="form-section-title">支付方式</h2>
+                    <div class="payment-methods">
+                        <div class="payment-method selected" data-method="credit">
+                            <i class="fas fa-credit-card"></i>
+                            <div>信用卡</div>
+                        </div>
+                        <div class="payment-method" data-method="debit">
+                            <i class="fas fa-university"></i>
+                            <div>借记卡</div>
+                        </div>
+                        <div class="payment-method" data-method="alipay">
+                            <i class="fab fa-alipay"></i>
+                            <div>支付宝</div>
+                        </div>
+                        <div class="payment-method" data-method="wechat">
+                            <i class="fab fa-weixin"></i>
+                            <div>微信支付</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="form-section-title">备注</h2>
+                    <div class="form-group">
+                        <textarea class="form-input" rows="4" placeholder="请输入订单备注（选填）"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 订单摘要 -->
+            <div class="order-summary">
+                <h2 class="form-section-title">订单摘要</h2>
+                <div class="order-items">
+                    <!-- 订单商品会通过 JavaScript 动态添加 -->
+                </div>
+                <div class="order-total">
+                    <div class="total-row">
+                        <span>商品小计</span>
+                        <span class="subtotal">$0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>运费</span>
+                        <span class="shipping">$0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>税费</span>
+                        <span class="tax">$0.00</span>
+                    </div>
+                    <div class="total-row final">
+                        <span>总计</span>
+                        <span class="total-price">$0.00</span>
+                    </div>
+                </div>
+                <button class="place-order-btn" disabled>提交订单</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- AI 聊天助手 -->
+    <div class="chat-widget">
+        <button class="chat-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chat-badge">新消息</span>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>AI 购物助手</h3>
+                <button class="chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        您好！我是您的AI购物助手，很高兴为您服务。请问有什么我可以帮您的吗？
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="请输入您的问题...">
+                <button class="send-message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>关于我们</h3>
+                <p>温哥华食品烟草商城是您值得信赖的优质商品供应商。我们提供高品质的食品和烟草产品，确保您的购物体验。</p>
+            </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="products.html">商品</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +1 (604) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@vancouverstore.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 温哥华市中心</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>关注我们</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 温哥华食品烟草商城. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html> 

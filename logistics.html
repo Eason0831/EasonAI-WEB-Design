@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物流信息 - 温哥华食品烟草商城</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .logistics-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .logistics-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .logistics-title {
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .back-to-order {
+            color: #666;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-to-order:hover {
+            color: #e74c3c;
+        }
+
+        .logistics-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .logistics-info {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            flex: 1;
+        }
+
+        .info-label {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .logistics-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #eee;
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #e74c3c;
+        }
+
+        .timeline-item.completed::after {
+            background: #e74c3c;
+        }
+
+        .timeline-item.pending::after {
+            border-color: #ddd;
+        }
+
+        .timeline-content {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 1rem;
+        }
+
+        .timeline-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .timeline-location {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .delivery-info {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+
+        .delivery-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .delivery-address {
+            margin-bottom: 1rem;
+        }
+
+        .address-label {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .address-value {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            flex: 1;
+        }
+
+        .contact-label {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .delivery-notes {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .notes-label {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .notes-value {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .logistics-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="温哥华食品烟草商城">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="products.html">商品</a>
+                <a href="about.html">关于我们</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+            <div class="nav-actions">
+                <div class="language-selector">
+                    <button class="lang-btn">
+                        <i class="fas fa-globe"></i>
+                        <span>中文</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <a href="#" class="active">中文</a>
+                        <a href="#">English</a>
+                    </div>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <div class="logistics-container">
+            <div class="logistics-header">
+                <h1 class="logistics-title">物流信息</h1>
+                <a href="#" class="back-to-order">
+                    <i class="fas fa-arrow-left"></i>
+                    返回订单详情
+                </a>
+            </div>
+
+            <div class="logistics-card">
+                <div class="logistics-info">
+                    <div class="info-item">
+                        <div class="info-label">运单号</div>
+                        <div class="info-value tracking-number">SF1234567890</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">承运公司</div>
+                        <div class="info-value carrier">顺丰速运</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">当前状态</div>
+                        <div class="info-value current-status">运输中</div>
+                    </div>
+                </div>
+
+                <div class="logistics-timeline">
+                    <!-- 物流时间线会通过 JavaScript 动态添加 -->
+                </div>
+            </div>
+
+            <div class="delivery-info">
+                <h2 class="delivery-title">收货信息</h2>
+                <div class="delivery-address">
+                    <div class="address-label">收货地址</div>
+                    <div class="address-value shipping-address">
+                        <!-- 收货地址会通过 JavaScript 动态添加 -->
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-label">收货人</div>
+                        <div class="contact-value shipping-name">
+                            <!-- 收货人会通过 JavaScript 动态添加 -->
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">联系电话</div>
+                        <div class="contact-value shipping-phone">
+                            <!-- 联系电话会通过 JavaScript 动态添加 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="delivery-notes">
+                    <div class="notes-label">备注</div>
+                    <div class="notes-value shipping-notes">
+                        <!-- 备注会通过 JavaScript 动态添加 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- AI 聊天助手 -->
+    <div class="chat-widget">
+        <button class="chat-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chat-badge">新消息</span>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>AI 购物助手</h3>
+                <button class="chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        您好！我是您的AI购物助手，很高兴为您服务。请问有什么我可以帮您的吗？
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="请输入您的问题...">
+                <button class="send-message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>关于我们</h3>
+                <p>温哥华食品烟草商城是您值得信赖的优质商品供应商。我们提供高品质的食品和烟草产品，确保您的购物体验。</p>
+            </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="products.html">商品</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +1 (604) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@vancouverstore.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 温哥华市中心</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>关注我们</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 温哥华食品烟草商城. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/logistics.js"></script>
+</body>
+</html> 

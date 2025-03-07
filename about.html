@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 温哥华食品烟草商城</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .about-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .about-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .about-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .company-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .intro-content {
+            line-height: 1.8;
+        }
+
+        .intro-content p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .intro-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .value-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-title {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            color: #666;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: #e74c3c;
+        }
+
+        .history-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #eee;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #e74c3c;
+        }
+
+        .timeline-year {
+            font-size: 1.2rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .company-intro {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="温哥华食品烟草商城">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="products.html">商品</a>
+                <a href="about.html">关于我们</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+            <div class="nav-actions">
+                <div class="language-selector">
+                    <button class="lang-btn">
+                        <i class="fas fa-globe"></i>
+                        <span>中文</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <a href="#" class="active">中文</a>
+                        <a href="#">English</a>
+                    </div>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <div class="about-container">
+            <div class="about-header">
+                <h1 class="about-title">关于我们</h1>
+                <p class="about-subtitle">
+                    温哥华食品烟草商城是您值得信赖的优质商品供应商。我们致力于为顾客提供高品质的食品和烟草产品，
+                    确保您的购物体验。通过严格的品质控制和专业的服务团队，我们努力成为您最可靠的购物伙伴。
+                </p>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">公司简介</h2>
+                <div class="company-intro">
+                    <div class="intro-content">
+                        <p>
+                            温哥华食品烟草商城成立于2010年，是一家专注于食品和烟草产品销售的综合性商城。
+                            我们拥有专业的采购团队，严格把控商品质量，确保每一件商品都符合加拿大相关标准。
+                        </p>
+                        <p>
+                            我们的使命是为顾客提供优质、安全、可靠的购物体验。通过持续创新和改进，
+                            我们不断优化服务流程，提升客户满意度。
+                        </p>
+                        <p>
+                            作为温哥华地区领先的食品烟草供应商，我们与多家知名品牌建立了长期合作关系，
+                            为顾客提供丰富的商品选择。
+                        </p>
+                    </div>
+                    <img src="images/about-company.jpg" alt="公司简介" class="intro-image">
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">我们的价值观</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <i class="fas fa-medal value-icon"></i>
+                        <h3 class="value-title">品质至上</h3>
+                        <p class="value-description">
+                            我们严格把控商品质量，确保每一件商品都符合最高标准。
+                        </p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-handshake value-icon"></i>
+                        <h3 class="value-title">诚信经营</h3>
+                        <p class="value-description">
+                            我们以诚信为本，建立长期稳定的客户关系。
+                        </p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-users value-icon"></i>
+                        <h3 class="value-title">客户至上</h3>
+                        <p class="value-description">
+                            我们始终把客户需求放在首位，提供优质服务。
+                        </p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-chart-line value-icon"></i>
+                        <h3 class="value-title">持续创新</h3>
+                        <p class="value-description">
+                            我们不断改进和创新，提升服务质量。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">发展历程</h2>
+                <div class="history-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010年</div>
+                        <div class="timeline-content">
+                            温哥华食品烟草商城正式成立，开始为本地客户提供优质服务。
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015年</div>
+                        <div class="timeline-content">
+                            成功开设第二家实体店，业务范围进一步扩大。
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018年</div>
+                        <div class="timeline-content">
+                            推出在线商城，开启线上线下融合发展模式。
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020年</div>
+                        <div class="timeline-content">
+                            获得"温哥华最佳零售商"称号，品牌影响力进一步提升。
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024年</div>
+                        <div class="timeline-content">
+                            推出AI购物助手，提供更智能的购物体验。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">我们的团队</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="images/team-1.jpg" alt="团队成员" class="member-image">
+                        <h3 class="member-name">张明</h3>
+                        <p class="member-title">创始人 & CEO</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="images/team-2.jpg" alt="团队成员" class="member-image">
+                        <h3 class="member-name">李华</h3>
+                        <p class="member-title">运营总监</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="images/team-3.jpg" alt="团队成员" class="member-image">
+                        <h3 class="member-name">王芳</h3>
+                        <p class="member-title">客户服务经理</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- AI 聊天助手 -->
+    <div class="chat-widget">
+        <button class="chat-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chat-badge">新消息</span>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>AI 购物助手</h3>
+                <button class="chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        您好！我是您的AI购物助手，很高兴为您服务。请问有什么我可以帮您的吗？
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="请输入您的问题...">
+                <button class="send-message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>关于我们</h3>
+                <p>温哥华食品烟草商城是您值得信赖的优质商品供应商。我们提供高品质的食品和烟草产品，确保您的购物体验。</p>
+            </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="products.html">商品</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +1 (604) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@vancouverstore.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 温哥华市中心</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>关注我们</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 温哥华食品烟草商城. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

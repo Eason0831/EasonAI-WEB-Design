@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车 - 温哥华食品烟草商城</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .cart-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .cart-title {
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .cart-summary {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .cart-total {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .cart-total-price {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .cart-items {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 100px 1fr auto auto;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .cart-item-name {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .cart-item-price {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .quantity-input {
+            width: 50px;
+            height: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .cart-item-total {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .cart-item-remove {
+            color: #999;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .cart-item-remove:hover {
+            color: #e74c3c;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .cart-empty-icon {
+            font-size: 4rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .cart-empty-text {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .continue-shopping {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #e74c3c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .continue-shopping:hover {
+            background: #c0392b;
+        }
+
+        .cart-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .clear-cart {
+            padding: 0.8rem 2rem;
+            background: #fff;
+            color: #666;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .clear-cart:hover {
+            background: #f5f5f5;
+        }
+
+        .checkout-btn {
+            padding: 0.8rem 2rem;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #c0392b;
+        }
+
+        .cart-summary-details {
+            margin-top: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .summary-row.total {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .cart-item {
+                grid-template-columns: 80px 1fr;
+                gap: 0.5rem;
+            }
+
+            .cart-item-image {
+                width: 80px;
+                height: 80px;
+            }
+
+            .cart-item-quantity,
+            .cart-item-total,
+            .cart-item-remove {
+                grid-column: 2;
+            }
+
+            .cart-item-remove {
+                justify-self: end;
+            }
+
+            .cart-actions {
+                flex-direction: column;
+            }
+
+            .cart-actions button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="温哥华食品烟草商城">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="products.html">商品</a>
+                <a href="about.html">关于我们</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+            <div class="nav-actions">
+                <div class="language-selector">
+                    <button class="lang-btn">
+                        <i class="fas fa-globe"></i>
+                        <span>中文</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <a href="#" class="active">中文</a>
+                        <a href="#">English</a>
+                    </div>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <div class="cart-container">
+            <div class="cart-header">
+                <h1 class="cart-title">购物车</h1>
+                <div class="cart-summary">
+                    <span class="cart-total">总计:</span>
+                    <span class="cart-total-price">$0.00</span>
+                </div>
+            </div>
+
+            <div class="cart-items">
+                <!-- 购物车为空时显示 -->
+                <div class="cart-empty" style="display: none;">
+                    <i class="fas fa-shopping-cart cart-empty-icon"></i>
+                    <p class="cart-empty-text">您的购物车是空的</p>
+                    <a href="products.html" class="continue-shopping">继续购物</a>
+                </div>
+
+                <!-- 购物车商品列表 -->
+                <div class="cart-items-list">
+                    <!-- 商品项会通过 JavaScript 动态添加 -->
+                </div>
+            </div>
+
+            <div class="cart-summary-details">
+                <div class="summary-row">
+                    <span>商品小计</span>
+                    <span class="subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>运费</span>
+                    <span class="shipping">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>税费</span>
+                    <span class="tax">$0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>总计</span>
+                    <span class="total-price">$0.00</span>
+                </div>
+            </div>
+
+            <div class="cart-actions">
+                <button class="clear-cart">清空购物车</button>
+                <button class="checkout-btn">结算</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- AI 聊天助手 -->
+    <div class="chat-widget">
+        <button class="chat-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chat-badge">新消息</span>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>AI 购物助手</h3>
+                <button class="chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        您好！我是您的AI购物助手，很高兴为您服务。请问有什么我可以帮您的吗？
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="请输入您的问题...">
+                <button class="send-message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>关于我们</h3>
+                <p>温哥华食品烟草商城是您值得信赖的优质商品供应商。我们提供高品质的食品和烟草产品，确保您的购物体验。</p>
+            </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="products.html">商品</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +1 (604) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@vancouverstore.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 温哥华市中心</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>关注我们</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 温哥华食品烟草商城. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html> 

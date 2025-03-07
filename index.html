@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>温哥华优选 - 食品与烟草精品店</title>
+    <!-- 引入CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="https://via.placeholder.com/150x50?text=Vancouver+Choice" alt="温哥华优选" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">
+                            产品分类
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="products.html?category=food">食品</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=tobacco">烟草</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=beverage">饮料</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=snacks">零食</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promotion.html">促销活动</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">关于我们</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">联系我们</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="search-container me-3">
+                        <input type="text" class="search-input" placeholder="搜索产品...">
+                        <button class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <a href="cart.html" class="position-relative me-3">
+                        <i class="fas fa-shopping-cart fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            0
+                        </span>
+                    </a>
+                    <a href="account.html" class="me-2">
+                        <i class="fas fa-user fs-5"></i>
+                    </a>
+                    <div class="language-switch ms-2">
+                        <a href="#" class="active" data-lang="zh">中</a>
+                        <span class="mx-1">|</span>
+                        <a href="#" data-lang="en">EN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <!-- 轮播横幅 -->
+        <section class="hero-slider">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-content" style="background-image: url('https://via.placeholder.com/1920x600?text=Premium+Food');">
+                            <div class="container">
+                                <div class="slide-text">
+                                    <h2>精选进口食品</h2>
+                                    <p>来自世界各地的优质食材，带给您非凡的味觉体验</p>
+                                    <a href="products.html?category=food" class="btn btn-primary">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-content" style="background-image: url('https://via.placeholder.com/1920x600?text=Premium+Tobacco');">
+                            <div class="container">
+                                <div class="slide-text">
+                                    <h2>高端烟草产品</h2>
+                                    <p>精选全球顶级烟草，为您提供极致享受</p>
+                                    <a href="products.html?category=tobacco" class="btn btn-primary">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-content" style="background-image: url('https://via.placeholder.com/1920x600?text=Special+Offer');">
+                            <div class="container">
+                                <div class="slide-text">
+                                    <h2>限时特惠活动</h2>
+                                    <p>精选商品8折优惠，数量有限，先到先得</p>
+                                    <a href="promotion.html" class="btn btn-primary">查看详情</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <!-- 精选产品 -->
+        <section class="featured-products section-padding">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2>精选产品</h2>
+                    <p>我们为您精心挑选的热门商品</p>
+                </div>
+                <div class="row">
+                    <!-- 产品1 -->
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="product-card">
+                            <div class="product-badge">新品</div>
+                            <div class="product-thumbnail">
+                                <img src="https://via.placeholder.com/300x300?text=Product1" alt="产品名称">
+                                <div class="product-actions">
+                                    <button class="btn-quick-view" data-product-id="1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-add-to-cart" data-product-id="1">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="btn-add-to-wishlist" data-product-id="1">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">
+                                    <a href="product-detail.html?id=1">意大利特级初榨橄榄油</a>
+                                </h3>
+                                <div class="product-price">
+                                    <span class="current-price">$29.99</span>
+                                    <span class="old-price">$35.99</span>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(42)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 产品2 -->
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="product-card">
+                            <div class="product-badge hot">热卖</div>
+                            <div class="product-thumbnail">
+                                <img src="https://via.placeholder.com/300x300?text=Product2" alt="产品名称">
+                                <div class="product-actions">
+                                    <button class="btn-quick-view" data-product-id="2">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-add-to-cart" data-product-id="2">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="btn-add-to-wishlist" data-product-id="2">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">
+                                    <a href="product-detail.html?id=2">日本高级和牛</a>
+                                </h3>
+                                <div class="product-price">
+                                    <span class="current-price">$199.99</span>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(127)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 产品3 -->
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="product-card">
+                            <div class="product-badge sale">促销</div>
+                            <div class="product-thumbnail">
+                                <img src="https://via.placeholder.com/300x300?text=Product3" alt="产品名称">
+                                <div class="product-actions">
+                                    <button class="btn-quick-view" data-product-id="3">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-add-to-cart" data-product-id="3">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="btn-add-to-wishlist" data-product-id="3">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">
+                                    <a href="product-detail.html?id=3">古巴雪茄礼盒装</a>
+                                </h3>
+                                <div class="product-price">
+                                    <span class="current-price">$89.99</span>
+                                    <span class="old-price">$119.99</span>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(38)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 产品4 -->
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="product-card">
+                            <div class="product-badge limited">限量</div>
+                            <div class="product-thumbnail">
+                                <img src="https://via.placeholder.com/300x300?text=Product4" alt="产品名称">
+                                <div class="product-actions">
+                                    <button class="btn-quick-view" data-product-id="4">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-add-to-cart" data-product-id="4">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                    <button class="btn-add-to-wishlist" data-product-id="4">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-title">
+                                    <a href="product-detail.html?id=4">法国顶级红酒珍藏</a>
+                                </h3>
+                                <div class="product-price">
+                                    <span class="current-price">$299.99</span>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(52)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="products.html" class="btn btn-outline-primary">查看更多产品</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 分类快速访问 -->
+        <section class="categories-section section-padding bg-light">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2>产品分类</h2>
+                    <p>浏览我们的主要产品类别</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <a href="products.html?category=food" class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3>食品</h3>
+                            <p>50+ 种产品</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <a href="products.html?category=tobacco" class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-smoking"></i>
+                            </div>
+                            <h3>烟草</h3>
+                            <p>30+ 种产品</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <a href="products.html?category=beverage" class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-wine-bottle"></i>
+                            </div>
+                            <h3>饮料</h3>
+                            <p>25+ 种产品</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <a href="products.html?category=snacks" class="category-card">
+                            <div class="category-icon">
+                                <i class="fas fa-cookie"></i>
+                            </div>
+                            <h3>零食</h3>
+                            <p>40+ 种产品</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 顾客评价 -->
+        <section class="testimonials-section section-padding">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2>顾客评价</h2>
+                    <p>听听我们的顾客怎么说</p>
+                </div>
+                <div class="testimonial-slider swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"温哥华优选的产品质量非常好，我购买的日本进口零食新鲜可口，配送速度也很快。客服态度也很好，解决问题很及时。"</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="https://via.placeholder.com/60x60" alt="顾客头像" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>张女士</h4>
+                                        <p>2023年5月购买</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <p>"网站上的产品种类很丰富，尤其是进口食品的选择让人印象深刻。包装也很精美，适合送礼。唯一的小问题是部分商品价格偏高。"</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="https://via.placeholder.com/60x60" alt="顾客头像" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>李先生</h4>
+                                        <p>2023年4月购买</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p>"作为一个烟草爱好者，我非常欣赏这家网站提供的精选雪茄系列。产品都是正品，保存完好，价格也比实体店更有竞争力。"</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <img src="https://via.placeholder.com/60x60" alt="顾客头像" class="author-avatar">
+                                    <div class="author-info">
+                                        <h4>王先生</h4>
+                                        <p>2023年6月购买</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI聊天助手入口 -->
+        <div id="ai-chat-widget" class="ai-chat-widget">
+            <button id="chat-toggle-btn" class="chat-toggle-btn">
+                <i class="fas fa-comments"></i>
+                <span class="notification-badge">1</span>
+            </button>
+            <div id="chat-window" class="chat-window">
+                <div class="chat-header">
+                    <h3>AI购物助手</h3>
+                    <button id="chat-minimize-btn" class="chat-minimize-btn">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+                <div class="chat-messages">
+                    <div class="message ai-message">
+                        <div class="message-avatar">
+                            <img src="https://via.placeholder.com/40x40" alt="AI助手">
+                        </div>
+                        <div class="message-content">
+                            <p>你好！我是您的专属购物助手。有任何问题都可以问我，比如产品推荐、订单查询或退货政策等。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" id="chat-input" placeholder="输入您的问题...">
+                    <button id="chat-send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="footer-widget">
+                            <img src="https://via.placeholder.com/180x60?text=Vancouver+Choice" alt="温哥华优选" class="footer-logo mb-4">
+                            <p>温哥华优选是一家专注于提供高品质食品和烟草产品的在线商店，致力于为温哥华地区的消费者带来世界各地的美食和优质烟草产品。</p>
+                            <div class="social-links mt-4">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-pinterest"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-5">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">快速链接</h3>
+                            <ul class="widget-list">
+                                <li><a href="about.html">关于我们</a></li>
+                                <li><a href="products.html">所有产品</a></li>
+                                <li><a href="faq.html">常见问题</a></li>
+                                <li><a href="terms.html">使用条款</a></li>
+                                <li><a href="privacy.html">隐私政策</a></li>
+                                <li><a href="contact.html">联系我们</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-5">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">客户服务</h3>
+                            <ul class="widget-list">
+                                <li><a href="account.html">我的账户</a></li>
+                                <li><a href="orders.html">订单查询</a></li>
+                                <li><a href="wishlist.html">收藏夹</a></li>
+                                <li><a href="shipping.html">配送政策</a></li>
+                                <li><a href="returns.html">退货政策</a></li>
+                                <li><a href="support.html">帮助中心</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">联系我们</h3>
+                            <ul class="contact-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>温哥华市中心商业区123号，BC省，加拿大</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>+1 (604) 123-4567</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-envelope"></i>
+                                    <span>info@vancouverchoice.com</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-clock"></i>
+                                    <span>周一至周日 9:00 - 21:00</span>
+                                </li>
+                            </ul>
+                            <div class="subscribe-form mt-4">
+                                <h4>订阅我们的通讯</h4>
+                                <form>
+                                    <div class="input-group">
+                                        <input type="email" class="form-control" placeholder="输入您的邮箱">
+                                        <button class="btn btn-primary" type="submit">订阅</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">© 2023 温哥华优选. 保留所有权利.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment-methods text-md-end">
+                            <img src="https://via.placeholder.com/300x30?text=Payment+Methods" alt="支付方式">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 引入JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单详情 - 温哥华食品烟草商城</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .order-detail-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .order-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .order-detail-title {
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .back-to-orders {
+            color: #666;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-to-orders:hover {
+            color: #e74c3c;
+        }
+
+        .order-detail-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .order-info-section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .order-item {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .order-item-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .order-item-info {
+            flex: 1;
+        }
+
+        .order-item-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-item-price {
+            color: #e74c3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-item-quantity {
+            color: #666;
+        }
+
+        .order-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-icon {
+            font-size: 2rem;
+            color: #2ecc71;
+        }
+
+        .status-text {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .status-description {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .order-timeline {
+            margin-top: 2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #eee;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #e74c3c;
+        }
+
+        .timeline-item.completed::after {
+            background: #2ecc71;
+        }
+
+        .timeline-item.pending::after {
+            background: #f1c40f;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .order-summary {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 2rem;
+            height: fit-content;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .summary-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .summary-item.total {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .order-actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .view-details {
+            background: #e74c3c;
+            color: #fff;
+        }
+
+        .view-details:hover {
+            background: #c0392b;
+        }
+
+        .cancel-order {
+            background: #fff;
+            color: #666;
+            border: 1px solid #ddd;
+        }
+
+        .cancel-order:hover {
+            background: #f5f5f5;
+        }
+
+        .reorder {
+            background: #fff;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+
+        .reorder:hover {
+            background: #fff5f5;
+        }
+
+        @media (max-width: 768px) {
+            .order-detail-content {
+                grid-template-columns: 1fr;
+            }
+
+            .order-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="温哥华食品烟草商城">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="products.html">商品</a>
+                <a href="about.html">关于我们</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+            <div class="nav-actions">
+                <div class="language-selector">
+                    <button class="lang-btn">
+                        <i class="fas fa-globe"></i>
+                        <span>中文</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <a href="#" class="active">中文</a>
+                        <a href="#">English</a>
+                    </div>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <div class="order-detail-container">
+            <div class="order-detail-header">
+                <h1 class="order-detail-title">订单详情</h1>
+                <a href="orders.html" class="back-to-orders">
+                    <i class="fas fa-arrow-left"></i>
+                    返回订单列表
+                </a>
+            </div>
+
+            <div class="order-detail-content">
+                <!-- 订单信息 -->
+                <div class="order-info-section">
+                    <h2 class="section-title">订单信息</h2>
+                    <div class="order-status">
+                        <i class="fas fa-check-circle status-icon"></i>
+                        <div>
+                            <div class="status-text">订单已完成</div>
+                            <div class="status-description">感谢您的购买！</div>
+                        </div>
+                    </div>
+
+                    <div class="order-timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-content">
+                                <div class="timeline-title">订单提交</div>
+                                <div class="timeline-date">2024-03-15 14:30</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-content">
+                                <div class="timeline-title">付款成功</div>
+                                <div class="timeline-date">2024-03-15 14:35</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-content">
+                                <div class="timeline-title">订单处理</div>
+                                <div class="timeline-date">2024-03-15 15:00</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-content">
+                                <div class="timeline-title">已发货</div>
+                                <div class="timeline-date">2024-03-16 09:00</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-content">
+                                <div class="timeline-title">已送达</div>
+                                <div class="timeline-date">2024-03-17 14:00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-items">
+                        <!-- 订单商品会通过 JavaScript 动态添加 -->
+                    </div>
+                </div>
+
+                <!-- 收货信息 -->
+                <div class="order-info-section">
+                    <h2 class="section-title">收货信息</h2>
+                    <div class="shipping-info">
+                        <!-- 收货信息会通过 JavaScript 动态添加 -->
+                    </div>
+                </div>
+
+                <!-- 订单摘要 -->
+                <div class="order-summary">
+                    <h2 class="section-title">订单摘要</h2>
+                    <div class="summary-item">
+                        <span>商品小计</span>
+                        <span class="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>运费</span>
+                        <span class="shipping">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>税费</span>
+                        <span class="tax">$0.00</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>总计</span>
+                        <span class="total-price">$0.00</span>
+                    </div>
+
+                    <div class="order-actions">
+                        <a href="#" class="action-btn view-details">查看物流</a>
+                        <button class="action-btn reorder">再次购买</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- AI 聊天助手 -->
+    <div class="chat-widget">
+        <button class="chat-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chat-badge">新消息</span>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>AI 购物助手</h3>
+                <button class="chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        您好！我是您的AI购物助手，很高兴为您服务。请问有什么我可以帮您的吗？
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="请输入您的问题...">
+                <button class="send-message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>关于我们</h3>
+                <p>温哥华食品烟草商城是您值得信赖的优质商品供应商。我们提供高品质的食品和烟草产品，确保您的购物体验。</p>
+            </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="products.html">商品</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +1 (604) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@vancouverstore.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 温哥华市中心</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>关注我们</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 温哥华食品烟草商城. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/order-detail.js"></script>
+</body>
+</html> 

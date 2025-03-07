@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品目录 - 温哥华优选</title>
+    <!-- 引入CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.0/dist/nouislider.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="https://via.placeholder.com/150x50?text=Vancouver+Choice" alt="温哥华优选" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">
+                            产品分类
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="products.html?category=food">食品</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=tobacco">烟草</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=beverage">饮料</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=snacks">零食</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promotion.html">促销活动</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">关于我们</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">联系我们</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="search-container me-3">
+                        <input type="text" class="search-input" placeholder="搜索产品...">
+                        <button class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <a href="cart.html" class="position-relative me-3">
+                        <i class="fas fa-shopping-cart fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            0
+                        </span>
+                    </a>
+                    <a href="account.html" class="me-2">
+                        <i class="fas fa-user fs-5"></i>
+                    </a>
+                    <div class="language-switch ms-2">
+                        <a href="#" class="active" data-lang="zh">中</a>
+                        <span class="mx-1">|</span>
+                        <a href="#" data-lang="en">EN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 主要内容 -->
+    <main class="products-page section-padding">
+        <div class="container">
+            <!-- 页面标题 -->
+            <div class="page-header mb-5">
+                <h1 class="page-title" id="category-title">所有产品</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">产品目录</li>
+                    </ol>
+                </nav>
+            </div>
+            
+            <div class="row">
+                <!-- 过滤器侧边栏 -->
+                <div class="col-lg-3 col-md-4">
+                    <div class="filter-sidebar">
+                        <!-- 分类过滤器 -->
+                        <div class="filter-widget">
+                            <h4 class="widget-title">产品分类</h4>
+                            <ul class="filter-categories">
+                                <li>
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="category" value="all" checked>
+                                        <span class="checkmark"></span>
+                                        所有产品
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="category" value="food">
+                                        <span class="checkmark"></span>
+                                        食品
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="category" value="tobacco">
+                                        <span class="checkmark"></span>
+                                        烟草
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="category" value="beverage">
+                                        <span class="checkmark"></span>
+                                        饮料
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="category" value="snacks">
+                                        <span class="checkmark"></span>
+                                        零食
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 价格过滤器 -->
+                        <div class="filter-widget">
+                            <h4 class="widget-title">价格范围</h4>
+                            <div class="price-filter">
+                                <div id="price-slider"></div>
+                                <div class="price-inputs mt-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>$<span id="price-min">0</span></span>
+                                        <span>$<span id="price-max">500</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 品牌过滤器 -->
+                        <div class="filter-widget">
+                            <h4 class="widget-title">品牌</h4>
+                            <ul class="filter-brands">
+                                <li>
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="brand" value="all" checked>
+                                        <span class="checkmark"></span>
+                                        所有品牌
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="brand" value="brand1">
+                                        <span class="checkmark"></span>
+                                        意大利格兰尼
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="brand" value="brand2">
+                                        <span class="checkmark"></span>
+                                        日本和牛协会
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="brand" value="brand3">
+                                        <span class="checkmark"></span>
+                                        古巴雪茄集团
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" name="brand" value="brand4">
+                                        <span class="checkmark"></span>
+                                        法国拉菲庄园
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 评分过滤器 -->
+                        <div class="filter-widget">
+                            <h4 class="widget-title">用户评分</h4>
+                            <ul class="filter-ratings">
+                                <li>
+                                    <label class="custom-radio">
+                                        <input type="radio" name="rating" value="all" checked>
+                                        <span class="checkmark"></span>
+                                        所有评分
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-radio">
+                                        <input type="radio" name="rating" value="5">
+                                        <span class="checkmark"></span>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-radio">
+                                        <input type="radio" name="rating" value="4">
+                                        <span class="checkmark"></span>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <span class="ms-1">及以上</span>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-radio">
+                                        <input type="radio" name="rating" value="3">
+                                        <span class="checkmark"></span>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <span class="ms-1">及以上</span>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 上架时间过滤器 -->
+                        <div class="filter-widget">
+                            <h4 class="widget-title">上架时间</h4>
+                            <ul class="filter-date">
+                                <li>
+                                    <label class="custom-radio">
+                                        <input type="radio" name="date" value="all" checked>
+                                        <span class="checkmark"></span>
+                                        所有时间
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-radio">
+                                        <input type="radio" name="date" value="new">
+                                        <span class="checkmark"></span>
+                                        最近上架
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-radio">
+                                        <input type="radio" name="date" value="week">
+                                        <span class="checkmark"></span>
+                                        一周内
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="custom-radio">
+                                        <input type="radio" name="date" value="month">
+                                        <span class="checkmark"></span>
+                                        一个月内
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 清除过滤器按钮 -->
+                        <button class="btn btn-outline-secondary w-100 mt-4" id="clear-filters">
+                            清除所有过滤器
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 产品展示区 -->
+                <div class="col-lg-9 col-md-8">
+                    <!-- 排序和布局控制 -->
+                    <div class="products-header mb-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <div class="products-result">
+                                    显示 <span id="result-count">12</span> 个结果（共 <span id="total-count">24</span> 个）
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="products-controls d-flex justify-content-md-end">
+                                    <div class="sort-by me-4">
+                                        <label for="sort-select" class="me-2">排序:</label>
+                                        <select id="sort-select" class="form-select form-select-sm">
+                                            <option value="popular">热门程度</option>
+                                            <option value="price-low">价格（低到高）</option>
+                                            <option value="price-high">价格（高到低）</option>
+                                            <option value="latest">最新上架</option>
+                                            <option value="rating">评分</option>
+                                        </select>
+                                    </div>
+                                    <div class="view-mode">
+                                        <button class="btn btn-sm btn-outline-secondary me-1 active" data-view="grid">
+                                            <i class="fas fa-th"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-secondary" data-view="list">
+                                            <i class="fas fa-list"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 产品网格 -->
+                    <div class="products-grid">
+                        <div class="row" id="products-container">
+                            <!-- 产品项将通过JS动态生成 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 加载更多 / 分页 -->
+                    <div class="pagination-container text-center mt-5">
+                        <nav aria-label="产品分页">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="footer-widget">
+                            <img src="https://via.placeholder.com/180x60?text=Vancouver+Choice" alt="温哥华优选" class="footer-logo mb-4">
+                            <p>温哥华优选是一家专注于提供高品质食品和烟草产品的在线商店，致力于为温哥华地区的消费者带来世界各地的美食和优质烟草产品。</p>
+                            <div class="social-links mt-4">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-pinterest"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-5">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">快速链接</h3>
+                            <ul class="widget-list">
+                                <li><a href="about.html">关于我们</a></li>
+                                <li><a href="products.html">所有产品</a></li>
+                                <li><a href="faq.html">常见问题</a></li>
+                                <li><a href="terms.html">使用条款</a></li>
+                                <li><a href="privacy.html">隐私政策</a></li>
+                                <li><a href="contact.html">联系我们</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 mb-5">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">客户服务</h3>
+                            <ul class="widget-list">
+                                <li><a href="account.html">我的账户</a></li>
+                                <li><a href="orders.html">订单查询</a></li>
+                                <li><a href="wishlist.html">收藏夹</a></li>
+                                <li><a href="shipping.html">配送政策</a></li>
+                                <li><a href="returns.html">退货政策</a></li>
+                                <li><a href="support.html">帮助中心</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">联系我们</h3>
+                            <ul class="contact-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>温哥华市中心商业区123号，BC省，加拿大</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>+1 (604) 123-4567</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-envelope"></i>
+                                    <span>info@vancouverchoice.com</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-clock"></i>
+                                    <span>周一至周日 9:00 - 21:00</span>
+                                </li>
+                            </ul>
+                            <div class="subscribe-form mt-4">
+                                <h4>订阅我们的通讯</h4>
+                                <form>
+                                    <div class="input-group">
+                                        <input type="email" class="form-control" placeholder="输入您的邮箱">
+                                        <button class="btn btn-primary" type="submit">订阅</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">© 2023 温哥华优选. 保留所有权利.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment-methods text-md-end">
+                            <img src="https://via.placeholder.com/300x30?text=Payment+Methods" alt="支付方式">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- AI聊天助手入口 -->
+    <div id="ai-chat-widget" class="ai-chat-widget">
+        <button id="chat-toggle-btn" class="chat-toggle-btn">
+            <i class="fas fa-comments"></i>
+            <span class="notification-badge">1</span>
+        </button>
+        <div id="chat-window" class="chat-window">
+            <div class="chat-header">
+                <h3>AI购物助手</h3>
+                <button id="chat-minimize-btn" class="chat-minimize-btn">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message ai-message">
+                    <div class="message-avatar">
+                        <img src="https://via.placeholder.com/40x40" alt="AI助手">
+                    </div>
+                    <div class="message-content">
+                        <p>你好！我是您的专属购物助手。有任何问题都可以问我，比如产品推荐、订单查询或退货政策等。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="输入您的问题...">
+                <button id="chat-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.0/dist/nouislider.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html> 
