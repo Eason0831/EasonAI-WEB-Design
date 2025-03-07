@@ -73,7 +73,7 @@ vancouver-store/
 
 1. 克隆项目
 ```bash
-git clone https://github.com/yourusername/vancouver-store.git
+git clone https://github.com/Eason0831/-.git
 ```
 
 2. 进入项目目录
