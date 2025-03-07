@@ -73,7 +73,7 @@ vancouver-store/
 
 1. 克隆项目
 ```bash
-git clone https://github.com/Eason0831/-.git
+git clone https://github.com/Eason0831/EasonAI-WEB-Design.git
 ```
 
 2. 进入项目目录
@@ -125,4 +125,5 @@ MIT License
 
 - 邮箱：wrz8611551@gmail.com
 - 电话：+1 (778) 955-1699
-- 地址：EasonAI王奕杰 
+- 地址：EasonAI王奕杰
+- 微信：easonw831
